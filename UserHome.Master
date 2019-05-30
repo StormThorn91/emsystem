@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="EMSystem.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="userCSS.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="userJS.js"></script>
+    <script>
+        function toshow() {
+            if (location.pathname == "/UserHome.aspx" || location.pathname == "/Return.aspx" || location.pathname == "/UserBorrowHistory.aspx" || location.pathname == "/AccountDetails.aspx" || location.pathname == "/ChangeAccDetails.aspx") {
+                document.getElementById("user").hidden = false;
+                document.getElementById("admin").hidden = true;
+            }
+            else {
+                document.getElementById("admin").hidden = false;
+                document.getElementById("user").hidden = true;
+            }
+
+        }
+    </script>
+</head>
+<body onload="toshow()">
+    <form id="form1" runat="server">
+    
+    <div class="sidenav" id="mySidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="logo">
+            <center>
+            <img src="dlsudlogo.png" />
+            </center>
+        </div>
+        <div id ="user">
+        <a href ="UserHome.aspx">BORROW ITEM</a>
+        <a href ="Return.aspx">RETURN ITEM</a>
+        <a href ="UserBorrowHistory.aspx">HISTORY</a>
+        <a href ="AccountDetails.aspx">ACCOUNT DETAILS</a>
+        <a href ="#" runat="server" onserverclick="btnLogout_Click">LOGOUT</a>
+        </div>
+        <div id ="admin">
+        <a href ="Admin.aspx">ADD / VIEW/ EDIT / DELETE ITEMS</a>
+        <a href ="AdminTrans.aspx">ALL TRANSACTION HISTORY</a>
+        <a href ="AdminViewAccs.aspx">ALL STUDENT DETAILS</a>
+        <a href ="#" runat="server" onserverclick="btnLogout_Click">LOGOUT</a>
+        </div>
+    </div>
+    
+    <div id="main">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+    </div>
+    
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            
+        </asp:ContentPlaceHolder>
+
+    </div>
+    </form>
+</body>
+</html>
